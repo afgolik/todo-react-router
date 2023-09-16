@@ -9,54 +9,76 @@ import {
 	useRequestUpdateStatus,
 	useRequestGetTodos,
 	useRequestUpdateTodo,
-	useSearchingTodo, useSortTodo
+	useSearchingTodo,
+	useSortTodo,
 } from './hook';
 import { Modal } from './components/ui/modal/modal';
-import { Search } from "./components/ui/search/search";
-import { Button } from "./components/ui/button/button";
+import { Search } from './components/ui/search/search';
+import { Button } from './components/ui/button/button';
+import {Link, Navigate, Route, Routes} from 'react-router-dom';
+import { NotFound } from './components/404/not-foung';
+import { MainPage } from './components/main-page';
 
 export const App = () => {
 	const [modalActive, setModalActive] = useState(false);
 	const [refreshTodosFlag, setRefreshTodosFlag] = useState(false);
 	const refreshTodos = () => setRefreshTodosFlag(!refreshTodosFlag);
 	const { todoList, isLoading } = useRequestGetTodos(refreshTodosFlag);
-	const { isCreated, requestAddTodo, addInputValue, setAddInputValue } = useRequestAddTodo(refreshTodos, setModalActive);
-	const { isUpdated, requestUpdateStatus } = useRequestUpdateStatus(todoList,	refreshTodos);
+	const { isCreated, requestAddTodo, addInputValue, setAddInputValue } =
+		useRequestAddTodo(refreshTodos, setModalActive);
+	const { isUpdated, requestUpdateStatus } = useRequestUpdateStatus(
+		todoList,
+		refreshTodos,
+	);
 	const { isDeleted, requestDeleteTodo } = useRequestDeleteTodo(todoList, refreshTodos);
-	const { isEdited, editableElementId, requestUpdateTodo, setEditableElementId } = useRequestUpdateTodo(todoList, refreshTodos);
-	const { isSearched, searchedTodoList, searchingTodo, onReset } = useSearchingTodo(todoList);
+	const { isEdited, editableElementId, requestUpdateTodo, setEditableElementId } =
+		useRequestUpdateTodo(todoList, refreshTodos);
+	const { isSearched, searchedTodoList, searchingTodo, onReset } =
+		useSearchingTodo(todoList);
 	const { isSorted, sortedTodoList, sortTodo } = useSortTodo(searchedTodoList);
 
 	const onClickChange = (id) => setEditableElementId(id);
 
 	return (
 		<div className={styles.app}>
-			<Search onClick={searchingTodo} isSearched={isSearched} onReset={onReset} />
-			<div className={styles.buttonBlock}>
-				<Modal
-					active={modalActive}
-					setActive={setModalActive}
-					initialValue={addInputValue}
-					onChange={setAddInputValue}
-					onClick={requestAddTodo}
-					disabled={isCreated}
-				/>
-				<Button text={isSorted ? 'Не сортировать' : 'Отсортировать'} onClick={sortTodo} className={isSorted ? styles.sortButton : null} />
+
+			<div className={styles.links}>
+
 			</div>
-			{isLoading ? <Loader /> : todoList.length ?
-				<TodoList
-					todoList={sortedTodoList}
-					isUpdated={isUpdated}
-					onChange={requestUpdateStatus}
-					onClick={requestDeleteTodo}
-					isDeleted={isDeleted}
-					isEdited={isEdited}
-					onClickChange={onClickChange}
-					editableElementId={editableElementId}
-					onBlur={requestUpdateTodo}
-				/> :
-				<div className={styles.text}>Список задач пуст</div>
-			}
+
+			<Routes>
+				<Route
+					path='/'
+					element={
+						<MainPage
+							modalActive={modalActive}
+							isLoading={isLoading}
+							isCreated={isCreated}
+							requestAddTodo={requestAddTodo}
+							addInputValue={addInputValue}
+							setAddInputValue={setAddInputValue}
+							isUpdated={isUpdated}
+							requestUpdateStatus={requestUpdateStatus}
+							isDeleted={isDeleted}
+							requestDeleteTodo={requestDeleteTodo}
+							isEdited={isEdited}
+							editableElementId={editableElementId}
+							requestUpdateTodo={requestUpdateTodo}
+							isSearched={isSearched}
+							searchingTodo={searchingTodo}
+							onReset={onReset}
+							isSorted={isSorted}
+							sortedTodoList={sortedTodoList}
+							sortTodo={sortTodo}
+							onClickChange={onClickChange}
+							setModalActive={setModalActive}
+							todoList={todoList}
+						/>
+					}
+				/>
+				<Route path='/404' element={<NotFound />} />
+				<Route path='*' element={<Navigate to='/404' />} />
+			</Routes>
 		</div>
 	);
 };

@@ -20,6 +20,12 @@
 .sortButton:hover {
     background-color: var(--primary-color) !important;
 }
+.links {
+    display: flex;
+}
+.links ul li {
+    margin: 20px;
+}
 /*--------------------------------------*/
 
 /*#tasks {*/
