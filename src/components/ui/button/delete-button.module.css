@@ -1,0 +1,23 @@
+.button {
+	cursor: pointer;
+	background-color: var(--primary-color);
+	color: var(--text-color);
+	border: none;
+	padding: 5px 20px;
+	border-radius: 5px;
+	font-size: 1.5rem;
+	line-height: 2.5rem;
+	transition: 0.2s ease;
+	position: relative;
+}
+.button:hover {
+	background-color: var(--delete-button-background);
+}
+.button:disabled {
+	opacity: 0.3;
+}
+.button:disabled:hover {
+	cursor: default;
+	color: var(--text-color);
+	background-color: var(--primary-color);
+}

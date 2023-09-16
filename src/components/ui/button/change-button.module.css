@@ -1,0 +1,27 @@
+.button {
+	cursor: pointer;
+	background-color: var(--primary-color);
+	color: var(--text-color);
+	border: 2px solid var(--primary-color);
+	margin-right: 10px;
+	padding: 4px 7px;
+	border-radius: 5px;
+	content: '\2714';
+}
+.button span {
+	display: block;
+	transform: scaleX(-1);
+	font-size: 18px;
+}
+.button:hover {
+	background-color: #2d6b25;
+	border-color: #2d6b25;
+}
+.button:disabled {
+	opacity: 0.3;
+}
+.button:disabled:hover {
+	cursor: default;
+	color: var(--text-color);
+	background-color: var(--primary-color);
+}
