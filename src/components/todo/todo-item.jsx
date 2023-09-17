@@ -1,6 +1,7 @@
 import styles from './todo-item.module.css';
 import { Button } from '../ui/button/button';
 import { InputWithButton } from '../ui/input/input-with-button';
+import {Link} from "react-router-dom";
 
 export const TodoItem = ({
 	id,
@@ -29,35 +30,11 @@ export const TodoItem = ({
 						/>
 						<label htmlFor={id}></label>
 					</form>
-					<span
-						className={
-							completed ? `${styles.text} ${styles.done}` : styles.text
-						}
-					>
-						{editableElementId === id ? (
-							<InputWithButton
-								onBlur={(value) => onBlur(id, value)}
-								initialValue={todo}
-								buttonText='&#10004;'
-								buttonClassName={`${styles.edit} ${styles.button}`}
-							/>
-						) : (
-							todo
-						)}
+					<span className={completed ? `${styles.text} ${styles.done}` : styles.text}>
+						<Link to={`task/${id}`}>
+							{todo}
+						</Link>
 					</span>
-				</div>
-				<div className={styles.buttons}>
-					<Button
-						className={`${styles.change} ${styles.button}`}
-						onClick={() => onClickChange(id)}
-						text='&#9998;'
-					/>
-					<Button
-						onClick={() => onClick(id)}
-						disabled={isDeleted}
-						text='Удалить'
-						className={`${styles.delete} ${styles.button}`}
-					/>
 				</div>
 			</div>
 		</div>

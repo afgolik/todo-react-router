@@ -15,9 +15,10 @@ import {
 import { Modal } from './components/ui/modal/modal';
 import { Search } from './components/ui/search/search';
 import { Button } from './components/ui/button/button';
-import {Link, Navigate, Route, Routes} from 'react-router-dom';
+import { Link, Navigate, Outlet, Route, Routes, useParams } from 'react-router-dom';
 import { NotFound } from './components/404/not-foung';
 import { MainPage } from './components/main-page';
+import { TodoItemOrigin } from './components/todo/todo-item-origin';
 
 export const App = () => {
 	const [modalActive, setModalActive] = useState(false);
@@ -41,11 +42,7 @@ export const App = () => {
 
 	return (
 		<div className={styles.app}>
-
-			<div className={styles.links}>
-
-			</div>
-
+			<div className={styles.links}></div>
 			<Routes>
 				<Route
 					path='/'
@@ -73,6 +70,20 @@ export const App = () => {
 							onClickChange={onClickChange}
 							setModalActive={setModalActive}
 							todoList={todoList}
+						/>
+					}
+				/>
+				<Route
+					path='task/:id'
+					element={
+						<TodoItemOrigin
+							todoList={todoList}
+							onBlur={requestUpdateTodo}
+							onChange={requestUpdateStatus}
+							isUpdated={isUpdated}
+							onClickChange={onClickChange}
+							onClick={requestDeleteTodo}
+							isDeleted={isDeleted}
 						/>
 					}
 				/>

@@ -1,34 +1,19 @@
 {
   "todoList": [
     {
-      "todo": "java",
+      "todo": "sdfsdf",
       "completed": false,
       "id": 1
     },
     {
-      "todo": "c++",
+      "todo": "sdfsdgersdfsdf",
+      "completed": false,
+      "id": 2
+    },
+    {
+      "todo": "sdfsdfhdfg",
       "completed": false,
       "id": 3
-    },
-    {
-      "todo": "html",
-      "completed": false,
-      "id": 5
-    },
-    {
-      "todo": "css",
-      "completed": false,
-      "id": 6
-    },
-    {
-      "todo": "javascript",
-      "completed": false,
-      "id": 7
-    },
-    {
-      "todo": "php",
-      "completed": false,
-      "id": 8
     }
   ]
 }
