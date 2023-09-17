@@ -1,6 +1,6 @@
 import styles from './search.module.css';
 import { InputWithButton } from '../input/input-with-button';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from '../button/button';
 
 export const Search = ({ onClick, isSearched, onReset }) => {
@@ -11,9 +11,9 @@ export const Search = ({ onClick, isSearched, onReset }) => {
 			setClear(true);
 		}
 	};
-	const handleOnClick = () => {
+	const handleOnClick = (value) => {
 		if (onClick) {
-			onClick();
+			onClick(value);
 			setClear(false);
 		}
 	};

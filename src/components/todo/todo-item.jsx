@@ -1,6 +1,4 @@
 import styles from './todo-item.module.css';
-import { Button } from '../ui/button/button';
-import { InputWithButton } from '../ui/input/input-with-button';
 import {Link} from "react-router-dom";
 
 export const TodoItem = ({
@@ -9,11 +7,6 @@ export const TodoItem = ({
 	completed,
 	isUpdated,
 	onChange,
-	onClick,
-	isDeleted,
-	onClickChange,
-	editableElementId,
-	onBlur,
 }) => {
 	return (
 		<div key={id} className={styles.item}>

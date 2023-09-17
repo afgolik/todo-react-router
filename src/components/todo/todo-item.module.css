@@ -4,6 +4,14 @@
 	width: 100%;
 	display: flex;
 	justify-content: flex-start;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.text a {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
 .checkbox + label {
 	display: block;
@@ -86,8 +94,26 @@
 	background-color: #2d6b25;
 }
 .button.edit:hover {
-	background-color: #2d6b25;
+	background-color: #2d6b50
 }
 .button.delete:hover {
 	background-color: brown;
+}
+.back {
+	margin-bottom: 50px;
+}
+.bigText {
+	font-size: 2rem;
+	line-height: 2.5rem;
+	width: 100%;
+	text-align: left;
+}
+.itemPage {
+	width: 100%;
+	font-size: 1.5rem;
+	line-height: 2.5rem;
+	padding: 10px 0;
+	margin-bottom: 10px;
+	display: flex;
+	flex-direction: column;
 }

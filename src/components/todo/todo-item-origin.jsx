@@ -1,7 +1,7 @@
 import styles from './todo-item.module.css';
 import { Button } from '../ui/button/button';
 import { InputWithButton } from '../ui/input/input-with-button';
-import { useParams } from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import {useState} from "react";
 
 export const TodoItemOrigin = ({
@@ -15,7 +15,6 @@ export const TodoItemOrigin = ({
 }) => {
 	const params = useParams();
 	const todo = todoList.find(({ id }) => +params.id === id);
-	console.log(todo);
 	const [isEdit, setIsEdit] = useState(false);
 	const onEdit = () => {
 		onClickChange(todo.id);
@@ -27,8 +26,9 @@ export const TodoItemOrigin = ({
 	};
 	return (
 		<>
+			<Link to='/'><Button text='Назад' className={styles.back} /></Link>
 			{todo ? (
-				<div className={styles.item}>
+				<div className={styles.itemPage}>
 					<div className={styles.container}>
 						<div className={styles.content}>
 							<form>
@@ -45,8 +45,8 @@ export const TodoItemOrigin = ({
 							<span
 								className={
 									todo.completed
-										? `${styles.text} ${styles.done}`
-										: styles.text
+										? `${styles.bigText} ${styles.done}`
+										: styles.bigText
 								}
 							>
 								{isEdit ? (

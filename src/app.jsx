@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './app.module.css';
 import { useState } from 'react';
-import { TodoList } from './components/todo/todo-list';
-import { Loader } from './components/ui/loader/loader';
 import {
 	useRequestAddTodo,
 	useRequestDeleteTodo,
@@ -12,10 +10,7 @@ import {
 	useSearchingTodo,
 	useSortTodo,
 } from './hook';
-import { Modal } from './components/ui/modal/modal';
-import { Search } from './components/ui/search/search';
-import { Button } from './components/ui/button/button';
-import { Link, Navigate, Outlet, Route, Routes, useParams } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { NotFound } from './components/404/not-foung';
 import { MainPage } from './components/main-page';
 import { TodoItemOrigin } from './components/todo/todo-item-origin';
