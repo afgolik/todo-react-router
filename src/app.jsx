@@ -27,13 +27,12 @@ export const App = () => {
 		refreshTodos,
 	);
 	const { isDeleted, requestDeleteTodo } = useRequestDeleteTodo(todoList, refreshTodos);
-	const { isEdited, editableElementId, requestUpdateTodo, setEditableElementId } =
+	const { isEdited, requestUpdateTodo } =
 		useRequestUpdateTodo(todoList, refreshTodos);
 	const { isSearched, searchedTodoList, searchingTodo, onReset } =
 		useSearchingTodo(todoList);
 	const { isSorted, sortedTodoList, sortTodo } = useSortTodo(searchedTodoList);
 
-	const onClickChange = (id) => setEditableElementId(id);
 
 	return (
 		<div className={styles.app}>
@@ -54,7 +53,6 @@ export const App = () => {
 							isDeleted={isDeleted}
 							requestDeleteTodo={requestDeleteTodo}
 							isEdited={isEdited}
-							editableElementId={editableElementId}
 							requestUpdateTodo={requestUpdateTodo}
 							isSearched={isSearched}
 							searchingTodo={searchingTodo}
@@ -62,7 +60,6 @@ export const App = () => {
 							isSorted={isSorted}
 							sortedTodoList={sortedTodoList}
 							sortTodo={sortTodo}
-							onClickChange={onClickChange}
 							setModalActive={setModalActive}
 							todoList={todoList}
 						/>
@@ -76,7 +73,6 @@ export const App = () => {
 							onBlur={requestUpdateTodo}
 							onChange={requestUpdateStatus}
 							isUpdated={isUpdated}
-							onClickChange={onClickChange}
 							onClick={requestDeleteTodo}
 							isDeleted={isDeleted}
 						/>

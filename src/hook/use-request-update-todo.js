@@ -3,7 +3,6 @@ import { useState } from 'react';
 
 export const useRequestUpdateTodo = (todoList, refreshTodos) => {
 	const [isEdited, setIsEdited] = useState(false);
-	const [editableElementId, setEditableElementId] = useState(null);
 
 	const requestUpdateTodo = (id, value) => {
 		setIsEdited(true);
@@ -27,15 +26,12 @@ export const useRequestUpdateTodo = (todoList, refreshTodos) => {
 					})
 					.finally(() => {
 						setIsEdited(false);
-						setEditableElementId(null);
 					});
 			}
 		});
 	};
 	return {
 		isEdited,
-		editableElementId,
 		requestUpdateTodo,
-		setEditableElementId,
 	};
 };

@@ -9,7 +9,6 @@ export const TodoItemOrigin = ({
 	todoList,
 	onChange,
 	isUpdated,
-	onClickChange,
 	isDeleted,
 	onClick,
 }) => {
@@ -17,7 +16,6 @@ export const TodoItemOrigin = ({
 	const todo = todoList.find(({ id }) => +params.id === id);
 	const [isEdit, setIsEdit] = useState(false);
 	const onEdit = () => {
-		onClickChange(todo.id);
 		setIsEdit(true);
 	};
 	const handleBlur = (value) => {

@@ -6,8 +6,6 @@ export const TodoList = ({
 	onChange,
 	onClick,
 	isDeleted,
-	onClickChange,
-	editableElementId,
 	onBlur,
 }) => {
 	return (
@@ -22,8 +20,6 @@ export const TodoList = ({
 					onChange={onChange}
 					onClick={onClick}
 					isDeleted={isDeleted}
-					onClickChange={onClickChange}
-					editableElementId={editableElementId}
 					onBlur={onBlur}
 				/>
 			))}

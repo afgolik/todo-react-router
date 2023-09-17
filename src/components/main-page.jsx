@@ -10,7 +10,6 @@ export const MainPage = ({
 	modalActive,
 	addInputValue,
 	setAddInputValue,
-	editableElementId,
 	requestUpdateTodo,
 	requestAddTodo,
 	sortedTodoList,
@@ -20,7 +19,6 @@ export const MainPage = ({
 	requestDeleteTodo,
 	isEdited,
 	isSorted,
-	onClickChange,
 	searchingTodo,
 	onReset,
 	isLoading,
@@ -58,8 +56,6 @@ export const MainPage = ({
 					onClick={requestDeleteTodo}
 					isDeleted={isDeleted}
 					isEdited={isEdited}
-					onClickChange={onClickChange}
-					editableElementId={editableElementId}
 					onBlur={requestUpdateTodo}
 				/>
 			) : (
